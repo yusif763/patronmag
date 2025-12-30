@@ -1,55 +1,31 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: 'standalone', // Enable standalone output for Docker
-  
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'api.patronmag.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '**.patronmag.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'img.youtube.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-      },
-    ],
-    formats: ['image/avif', 'image/webp'],
-  },
-  
-  // Enable React strict mode for better development
-  reactStrictMode: true,
-  
-  // Headers for security and caching
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on'
-          },
-          {
-            key: 'X-Frame-Options',
-            value: 'SAMEORIGIN'
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff'
-          },
+    output: 'export',
+
+    images: {
+        unoptimized: true,
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'api.patronmag.com',
+            },
+            {
+                protocol: 'https',
+                hostname: '**.patronmag.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'img.youtube.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+            },
         ],
-      },
-    ];
-  },
+    },
+
+    reactStrictMode: true,
 };
 
 export default nextConfig;
