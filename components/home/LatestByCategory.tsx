@@ -22,7 +22,7 @@ export default function LatestByCategory({
           href={`/${category}`}
           className="text-sm font-semibold text-[#bb1919] hover:underline"
         >
-          View all →
+          View all
         </Link>
       </div>
 
