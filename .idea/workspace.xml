@@ -5,30 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="582a8822-e0ff-4be0-8b9c-3f0f742a30e9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/[category]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/[category]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/article/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/article/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/reloading/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/search/page.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/article/ShareButtons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/article/ShareButtons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/common/ArticleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/ArticleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/home/FeaturedSection.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/home/LatestByCategory.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/home/TrendingSection.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/Footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/SearchBar.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/tables/ReloadingTable.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/client.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/services.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/types/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/types/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/mockData.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +88,7 @@
       <workItem from="1767082093878" duration="616000" />
       <workItem from="1767083361425" duration="363000" />
       <workItem from="1767083753930" duration="12038000" />
-      <workItem from="1768303009941" duration="4071000" />
+      <workItem from="1768303009941" duration="4224000" />
     </task>
     <servers />
   </component>
