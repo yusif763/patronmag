@@ -1,92 +1,39 @@
-// Category types
 export type CategoryType = 
-  | 'news'
-  | 'pistol'
-  | 'rifle'
-  | 'shotgun'
-  | 'revolver'
-  | 'ammunition'
-  | 'reloading'
-  | 'optics'
-  | 'accessories'
-  | 'history';
+  | 'news' | 'pistol' | 'rifle' | 'shotgun' | 'revolver'
+  | 'ammunition' | 'reloading' | 'optics' | 'accessories' | 'history';
 
-export interface Category {
-  id: string;
-  name: string;
-  slug: CategoryType;
-  description?: string;
-}
-
-// Article types
 export interface Article {
-  id: string;
+  id: number;
   title: string;
   slug: string;
   excerpt: string;
   content: string;
-  category: CategoryType;
-  categoryName?: string;
   author?: string;
-  publishedAt: string;
-  updatedAt?: string;
-  featuredImage?: string;
-  images?: string[];
-  videoUrl?: string;
-  videoType?: 'youtube' | 'self-hosted';
+  image?: string;
+  category?: any;
+  published_at: string;
+  updated_at?: string;
+  featured_image?: string;
   tags?: string[];
-  isFeatured?: boolean;
-  isTrending?: boolean;
-  viewCount?: number;
+  is_featured?: boolean;
+  is_trending?: boolean;
+  view_count?: number;
 }
 
-// Search types
-export interface SearchParams {
-  query: string;
-  tags?: string[];
-  category?: CategoryType;
-  page?: number;
-  limit?: number;
-}
-
-export interface SearchResult {
-  articles: Article[];
-  total: number;
-  page: number;
-  totalPages: number;
-}
-
-// Reloading data types
 export interface ReloadingData {
-  id: string;
+  id: number;
   caliber: string;
-  bulletWeight: string;
-  powder: string;
-  powderWeight: string;
+  bullet_weight: string;
+  powder_type: string;
+  powder_weight: string;
   velocity: string;
   pressure: string;
   notes?: string;
 }
 
-// API Response types
 export interface ApiResponse<T> {
-  data: T;
-  success: boolean;
-  message?: string;
-}
-
-export interface PaginatedResponse<T> {
-  results: T[];
   count: number;
-  next?: string | null;
-  previous?: string | null;
-}
-
-// Homepage sections
-export interface HomepageData {
-  featured: Article[];
-  trending: Article[];
-  latestByCategory: {
-    [key in CategoryType]?: Article[];
-  };
+  next: string | null;
+  previous: string | null;
+  results: T[];
 }

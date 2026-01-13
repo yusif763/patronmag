@@ -1,154 +1,62 @@
 import { apiGet } from './client';
 import { API_ENDPOINTS } from './config';
-import {
-  Article,
-  CategoryType,
-  PaginatedResponse,
-  SearchResult,
-  SearchParams,
-  HomepageData,
-  ReloadingData,
-} from '../types';
+import { Article, CategoryType, ApiResponse, ReloadingData } from '../types';
 
-// Articles
-export async function getArticles(
-  limit?: number
-): Promise<PaginatedResponse<Article>> {
-  const url = limit 
-    ? `${API_ENDPOINTS.ARTICLES}?limit=${limit}`
-    : API_ENDPOINTS.ARTICLES;
-  return apiGet<PaginatedResponse<Article>>(url);
+export async function getArticlesByCategory(category: CategoryType): Promise<Article[]> {
+  const endpoint = API_ENDPOINTS.getCategoryEndpoint(category);
+  const data = await apiGet<ApiResponse<Article>>(endpoint);
+  return data.results || [];
 }
 
-export async function getArticleBySlug(slug: string): Promise<Article> {
-  return apiGet<Article>(API_ENDPOINTS.ARTICLE_DETAIL(slug));
+export async function getArticleBySlug(category: CategoryType, slug: string): Promise<Article | undefined> {
+  const articles = await getArticlesByCategory(category);
+  return articles.find((a) => a.slug === slug);
 }
 
-export async function getArticlesByCategory(
-  category: CategoryType,
-  limit?: number
-): Promise<PaginatedResponse<Article>> {
-  const url = limit
-    ? `${API_ENDPOINTS.CATEGORY_ARTICLES(category)}&limit=${limit}`
-    : API_ENDPOINTS.CATEGORY_ARTICLES(category);
-  return apiGet<PaginatedResponse<Article>>(url);
+export async function searchArticles(query: string): Promise<Article[]> {
+  const url = `${API_ENDPOINTS.SEARCH}?q=${encodeURIComponent(query)}`;
+  const data = await apiGet<ApiResponse<Article>>(url);
+  return data.results || [];
 }
 
-// Homepage sections
-export async function getFeaturedArticles(
-  limit: number = 4
-): Promise<Article[]> {
-  const response = await apiGet<PaginatedResponse<Article>>(
-    `${API_ENDPOINTS.FEATURED}&limit=${limit}`
-  );
-  return response.results || [];
+export async function getReloadingData(): Promise<ReloadingData[]> {
+  const data = await apiGet<ApiResponse<ReloadingData>>(API_ENDPOINTS.RELOADING_DATA);
+  return data.results || [];
 }
 
-export async function getTrendingArticles(
-  limit: number = 6
-): Promise<Article[]> {
-  const response = await apiGet<PaginatedResponse<Article>>(
-    `${API_ENDPOINTS.TRENDING}&limit=${limit}`
-  );
-  return response.results || [];
-}
+export async function getHomepageData() {
+  const categories: CategoryType[] = [
+    'news', 'pistol', 'rifle', 'shotgun', 'revolver',
+    'ammunition', 'reloading', 'optics', 'accessories', 'history',
+  ];
 
-export async function getLatestArticles(
-  limit: number = 10
-): Promise<Article[]> {
-  const response = await apiGet<PaginatedResponse<Article>>(
-    `${API_ENDPOINTS.LATEST}&limit=${limit}`
-  );
-  return response.results || [];
-}
-
-export async function getLatestByCategory(
-  category: CategoryType,
-  limit: number = 3
-): Promise<Article[]> {
-  const response = await apiGet<PaginatedResponse<Article>>(
-    `${API_ENDPOINTS.LATEST_BY_CATEGORY(category)}&limit=${limit}`
-  );
-  return response.results || [];
-}
-
-export async function getHomepageData(): Promise<HomepageData> {
   try {
-    const [featured, trending] = await Promise.all([
-      getFeaturedArticles(4),
-      getTrendingArticles(6),
-    ]);
-
-    // Get latest articles for each category
-    const categories: CategoryType[] = [
-      'news',
-      'pistol',
-      'rifle',
-      'shotgun',
-      'revolver',
-      'ammunition',
-      'reloading',
-      'optics',
-      'accessories',
-      'history',
-    ];
-
-    const latestByCategory: HomepageData['latestByCategory'] = {};
-
-    await Promise.all(
-      categories.map(async (category) => {
+    const allArticles = await Promise.all(
+      categories.map(async (cat) => {
         try {
-          const articles = await getLatestByCategory(category, 3);
-          latestByCategory[category] = articles;
-        } catch (error) {
-          console.error(`Failed to fetch latest for ${category}:`, error);
-          latestByCategory[category] = [];
+          return await getArticlesByCategory(cat);
+        } catch {
+          return [];
         }
       })
     );
 
-    return {
-      featured,
-      trending,
-      latestByCategory,
-    };
+    const flatArticles = allArticles.flat();
+    const featured = flatArticles.filter((a) => a.is_featured).slice(0, 4);
+    const trending = flatArticles.filter((a) => a.is_trending).slice(0, 6);
+
+    const latestByCategory: Record<string, Article[]> = {};
+    categories.forEach((cat, i) => {
+      latestByCategory[cat] = allArticles[i]?.slice(0, 3) || [];
+    });
+
+    return { featured, trending, latestByCategory };
   } catch (error) {
-    console.error('Failed to fetch homepage data:', error);
-    throw error;
+    console.error('Homepage data error:', error);
+    return {
+      featured: [],
+      trending: [],
+      latestByCategory: {},
+    };
   }
-}
-
-// Search
-export async function searchArticles(
-  params: SearchParams
-): Promise<SearchResult> {
-  const searchParams = new URLSearchParams();
-  searchParams.append('q', params.query);
-  
-  if (params.tags && params.tags.length > 0) {
-    params.tags.forEach(tag => searchParams.append('tags', tag));
-  }
-  
-  if (params.category) {
-    searchParams.append('category', params.category);
-  }
-  
-  if (params.page) {
-    searchParams.append('page', params.page.toString());
-  }
-  
-  if (params.limit) {
-    searchParams.append('limit', params.limit.toString());
-  }
-
-  const url = `${API_ENDPOINTS.SEARCH}?${searchParams.toString()}`;
-  return apiGet<SearchResult>(url);
-}
-
-// Reloading data
-export async function getReloadingData(): Promise<ReloadingData[]> {
-  const response = await apiGet<PaginatedResponse<ReloadingData>>(
-    API_ENDPOINTS.RELOADING_DATA
-  );
-  return response.results || [];
 }
