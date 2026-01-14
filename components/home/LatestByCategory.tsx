@@ -31,7 +31,7 @@ export default function LatestByCategory({
                     <ArticleCard
                         key={article.id}
                         article={article}
-                        variant={index === 0 ? 'default' : 'small'}
+                        variant={'default'}
                     />
                 ))}
             </div>
