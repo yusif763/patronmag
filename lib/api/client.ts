@@ -10,30 +10,20 @@ export class ApiError extends Error {
 }
 
 export async function apiGet<T>(url: string): Promise<T> {
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            next: { revalidate: 300 },
-            // @ts-ignore - SSL certificate bypass for development
-            agent: typeof window === 'undefined'
-                ? new (require('https').Agent)({ rejectUnauthorized: false })
-                : undefined,
-        });
+    const response = await fetch(url, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        next: { revalidate: 300 },
+    });
 
-        if (!response.ok) {
-            throw new ApiError(
-                `HTTP error! status: ${response.status}`,
-                response.status,
-                url
-            );
-        }
-
-        return await response.json();
-    } catch (error) {
-        console.error('API Error:', error);
-        throw error;
+    if (!response.ok) {
+        throw new ApiError(
+            `HTTP error! status: ${response.status}`,
+            response.status,
+            url
+        );
     }
+
+    return response.json();
 }
