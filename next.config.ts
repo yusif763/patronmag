@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
                 hostname: 'api.patronmag.com',
             },
             {
+                protocol: 'http',
+                hostname: '**.patronmag.com',
+            },
+            {
                 protocol: 'https',
                 hostname: '**.patronmag.com',
             },
