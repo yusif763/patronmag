@@ -1,5 +1,6 @@
 'use client';
 
+import Image from "next/image";
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -56,10 +57,14 @@ export default function Header() {
                         </button>
 
                         {/* Logo */}
-                        <Link href="/" className="flex items-center gap-1">
-                            <div className="bg-[#bb1919] text-white font-bold text-xl px-4 py-2">P</div>
-                            <div className="bg-[#bb1919] text-white font-bold text-xl px-4 py-2">M</div>
-                            <div className="bg-[#bb1919] text-white font-bold text-xl px-4 py-2">G</div>
+                        <Link href="/" className="flex items-center">
+                            <Image
+                                src="/logo1.png"
+                                alt="PMG Logo"
+                                width={80}     // istədiyin ölçüyə görə dəyiş
+                                height={40}
+                                priority
+                            />
                         </Link>
 
                         {/* Desktop search */}
