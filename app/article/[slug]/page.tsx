@@ -27,52 +27,6 @@ function getCategorySlugById(id: number): string {
 }
 
 
-
-export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
-    const { slug } = await params;
-
-    try {
-        const allArticles = await Promise.all(
-            CATEGORIES.map(async (cat) => {
-                try {
-                    return await getArticlesByCategory(cat.slug);
-                } catch {
-                    return [];
-                }
-            })
-        );
-
-        const article = allArticles.flat().find((a) => a.slug === slug);
-
-        if (!article) {
-            return { title: 'Article Not Found' };
-        }
-
-        const excerpt = generateExcerpt(article.content, 160);
-
-        return {
-            title: `${article.title} | PatronMag`,
-            description: excerpt,
-            openGraph: {
-                title: article.title,
-                description: excerpt,
-                type: 'article',
-                publishedTime: article.published_at,
-                authors: article.author ? [article.author] : undefined,
-                images: article.image ? [article.image] : undefined,
-            },
-            twitter: {
-                card: 'summary_large_image',
-                title: article.title,
-                description: excerpt,
-                images: article.image ? [article.image] : undefined,
-            },
-        };
-    } catch {
-        return { title: 'Article Not Found' };
-    }
-}
-
 export default async function ArticlePage({ params }: ArticlePageProps) {
     const { slug } = await params;
 

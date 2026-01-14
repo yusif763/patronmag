@@ -10,15 +10,7 @@ interface CategoryPageProps {
     params: Promise<{ category: string }>;
 }
 
-export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
-    const { category } = await params;
-    const categoryName = getCategoryName(category as CategoryType);
 
-    return {
-        title: `${categoryName} - PatronMag`,
-        description: `Latest articles and news about ${categoryName.toLowerCase()}. Expert reviews, guides, and information.`,
-    };
-}
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
     const { category } = await params;
