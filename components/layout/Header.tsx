@@ -59,7 +59,7 @@ export default function Header() {
                         {/* Logo */}
                         <Link href="/" className="flex items-center">
                             <Image
-                                src="/logo1.png"
+                                src="/patron-logo.png"
                                 alt="PMG Logo"
                                 width={80}     // istədiyin ölçüyə görə dəyiş
                                 height={40}
