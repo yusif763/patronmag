@@ -5,6 +5,7 @@ import { Article, CategoryType, ApiResponse, ReloadingData } from '../types';
 export async function getArticlesByCategory(category: CategoryType): Promise<Article[]> {
     const endpoint = API_ENDPOINTS.getCategoryEndpoint(category);
     const data = await apiGet<ApiResponse<Article>>(endpoint);
+    console.log(data);
     return data.results || [];
 }
 

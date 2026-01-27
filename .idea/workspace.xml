@@ -7,10 +7,7 @@
     <list default="true" id="582a8822-e0ff-4be0-8b9c-3f0f742a30e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/article/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/article/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/common/ArticleCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/common/ArticleCard.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/utils/helpers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/utils/helpers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api/services.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api/services.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +96,7 @@
       <workItem from="1768303009941" duration="11536000" />
       <workItem from="1768387802144" duration="4101000" />
       <workItem from="1768453672795" duration="3299000" />
-      <workItem from="1769496795948" duration="814000" />
+      <workItem from="1769496795948" duration="1229000" />
     </task>
     <servers />
   </component>

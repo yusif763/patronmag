@@ -14,14 +14,15 @@ function getCategorySlugById(id: number): string {
     const categoryMap: Record<number, string> = {
         1: 'news',
         2: 'ammunition',
-        3: 'pistol',
-        4: 'rifle',
-        5: 'shotgun',
-        6: 'revolver',
-        7: 'reloading',
-        8: 'optics',
-        9: 'accessories',
-        10: 'history',
+        3: 'rifle',
+        4: 'pistol',
+        5: 'revolver',
+        6: 'shotgun',
+        7: 'accessories',
+        8: 'history',
+        9: 'reloading',
+        10: 'optics',
+        11: 'reloading'
     };
     return categoryMap[id] || 'news';
 }
@@ -47,6 +48,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     }
 
     const categorySlug = getCategorySlugById(article.category);
+    console.log(article.category,'asdad');
     const categoryName = CATEGORIES.find(c => c.slug === categorySlug)?.name || 'Article';
     const excerpt = generateExcerpt(article.content, 200);
     const articleUrl = `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/article/${article.slug}`;
