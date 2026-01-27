@@ -10,7 +10,6 @@ export const revalidate = 300; // Revalidate every 5 minutes
 
 async function HomeContent() {
     const data = await getHomepageData();
-
     return (
         <>
             {/* Featured Section */}

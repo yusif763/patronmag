@@ -46,3 +46,19 @@ export function getCategoryName(slug: CategoryType): string {
 export function cn(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(' ');
 }
+
+
+export function fixImageUrl(url: string | null | undefined): string {
+    if (!url) return '/images/placeholder.jpg';
+
+    // Convert http:// to https://
+    if (url.startsWith('http://api.patronmag.com')) {
+        return url.replace('http://api.patronmag.com', 'https://api.patronmag.com');
+    }
+
+    if (url.startsWith('http://')) {
+        return url.replace('http://', 'https://');
+    }
+
+    return url;
+}

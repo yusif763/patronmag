@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import { formatDate, CATEGORIES, generateExcerpt } from '@/lib/utils/helpers';
+import {formatDate, CATEGORIES, generateExcerpt, fixImageUrl} from '@/lib/utils/helpers';
 import { getArticlesByCategory } from '@/lib/api/services';
 import ShareButtons from '@/components/article/ShareButtons';
 
@@ -110,7 +110,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                     {article.image && (
                         <div className="relative h-[400px] md:h-[500px] my-8">
                             <Image
-                                src={article.image}
+                                src={fixImageUrl(article.image)}
                                 alt={article.title}
                                 fill
                                 className="object-cover rounded"

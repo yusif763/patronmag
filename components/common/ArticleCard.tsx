@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Article } from '@/lib/types';
-import { formatDate, generateExcerpt } from '@/lib/utils/helpers';
+import {fixImageUrl, formatDate, generateExcerpt} from '@/lib/utils/helpers';
 
 interface ArticleCardProps {
     article: Article;
@@ -44,7 +44,7 @@ export default function ArticleCard({
                 <article className="relative overflow-hidden rounded-lg shadow-lg">
                     <div className="relative h-[400px] md:h-[500px]">
                         <Image
-                            src={imageUrl}
+                            src={fixImageUrl(article.image)}
                             alt={article.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -79,7 +79,7 @@ export default function ArticleCard({
                 <article className="flex gap-4 hover:bg-gray-50 p-2 rounded transition-colors">
                     <div className="relative w-32 h-24 flex-shrink-0 overflow-hidden rounded">
                         <Image
-                            src={imageUrl}
+                            src={fixImageUrl(article.image)}
                             alt={article.title}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -127,7 +127,7 @@ export default function ArticleCard({
             <article className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300">
                 <div className="relative h-56 overflow-hidden">
                     <Image
-                        src={imageUrl}
+                        src={fixImageUrl(article.image)}
                         alt={article.title}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
