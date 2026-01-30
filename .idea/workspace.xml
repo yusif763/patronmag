@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="582a8822-e0ff-4be0-8b9c-3f0f742a30e9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +96,7 @@
       <workItem from="1768387802144" duration="4101000" />
       <workItem from="1768453672795" duration="3299000" />
       <workItem from="1769496795948" duration="1926000" />
-      <workItem from="1769771260755" duration="2237000" />
+      <workItem from="1769771260755" duration="2404000" />
     </task>
     <servers />
   </component>
