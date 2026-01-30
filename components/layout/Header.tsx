@@ -101,12 +101,6 @@ export default function Header() {
 
                         {/* Right side actions */}
                         <div className="flex items-center gap-4">
-                            <button className="hidden md:block text-sm font-semibold hover:text-[#bb1919] transition-colors px-4 py-2">
-                                Register
-                            </button>
-                            <button className="text-sm font-semibold hover:text-[#bb1919] transition-colors px-4 py-2">
-                                Sign In
-                            </button>
                         </div>
                     </div>
 
